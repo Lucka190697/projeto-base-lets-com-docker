@@ -8,7 +8,7 @@
                 <div class="card-header">Register</div>
                 <div class="card-body">
                     <form role="form" method="POST" action="{{ url('/register') }}">
-                        {!! csrf_field() !!}
+                        @csrf
 
                         <div class="form-group row">
                             <label class="col-lg-4 col-form-label text-lg-right">Name</label>

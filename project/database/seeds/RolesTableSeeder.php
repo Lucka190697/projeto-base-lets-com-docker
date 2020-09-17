@@ -4,10 +4,11 @@ use Illuminate\Database\Seeder;
 
 use Spatie\Permission\Models\Role;
 use Spatie\Permission\Models\Permission;
+use App\Enums\UserRolesEnum;
 
 class RolesTableSeeder extends Seeder
 {
-    private $admin_role_name = 'admin';
+    private $roles = [UserRolesEnum::ADMIN, UserRolesEnum::CLIENT];
 
     /**
      * Run the seed.
@@ -16,12 +17,14 @@ class RolesTableSeeder extends Seeder
      */
     public function run()
     {
-        $admin_role = Role::firstOrCreate([
-            'name' => $this->admin_role_name,
-            'guard_name' => 'web',
-        ]);
+        foreach($this->roles as $role) {
+            $role = Role::firstOrCreate([
+                'name' => $role,
+                'guard_name' => 'web',
+            ]);
 
-        $all_permissions = Permission::all();
-        $admin_role->syncPermissions($all_permissions);
+            $all_permissions = Permission::all();
+            $role->syncPermissions($all_permissions);
+        }
     }
 }

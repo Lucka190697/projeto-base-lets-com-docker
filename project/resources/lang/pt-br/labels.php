@@ -5,5 +5,5 @@
      */
 
     return [
-        //
+        'created_at' => 'criado em',
     ];

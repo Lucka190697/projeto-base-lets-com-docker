@@ -8,11 +8,45 @@ return [
 
     '_home' => 'Home',
     '_users' => 'Usuários',
+    '_books' => 'Livros',
+    '_loans' => 'Empréstimos',
 
     'users' => [
         'index' => 'Usuários',
         'show' => 'Ver usuário',
         'edit' => 'Editar usuário',
         'create' => 'Cadastrar novo usuário',
+
+        'name' => 'Nome',
+        'email' => 'Email',
+        'password' => 'Senha',
+        'confirmPassword' => 'Confirmação de Senha',
+    ],
+
+    'books' => [
+        'index' => 'Livros',
+        'show' => 'Detalhes do Livro',
+        'edit' => 'Editar Livro',
+        'create' => 'Cadastrar novo livro',
+
+        'Title' => 'Título',
+        'Author' => 'Autor',
+        'Owner' => 'Proprietário',
+        'Giver' => 'Doador',
+        'Entry Date' => 'Data da Entrada',
+    ],
+
+    'loans' => [
+        'index' => 'Livros',
+        'show' => 'Detalhes do Livro',
+        'edit' => 'Editar o empréstimo',
+        'create' => 'Cadastrar um empréstimo',
+
+        'loans_date' => 'Data do empréstimo',
+        'return_date' => 'Data de devolução',
+        'book' => 'Livro',
+        'Entry Date' => 'Data da Entrada',
+        'is loan' => 'estado',
+
     ],
 ];

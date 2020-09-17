@@ -26,8 +26,11 @@
                     </div>
 
                     <div class="col-3">
-                        <a :href="'{{ route('users.create') }}'">
-                            <button class="btn btn-primary">Novo usuário</button>
+                        <a :href="'{{ route('admin.user.create') }}'">
+                            <button class="btn btn-primary">
+                                <i class="fa fa-plus"></i>
+                                @lang('headings.users.create')
+                            </button>
                         </a>
                     </div>
                 </div>

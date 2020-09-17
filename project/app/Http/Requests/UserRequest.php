@@ -30,7 +30,7 @@ class UserRequest extends FormRequest
         ];
 
         if (in_array($this->method(), ['PUT', 'PATCH'])) {
-            $rules['email'] .= ",{$this->user->id}";
+            $rules['email'] .= ",{$this->user}";
         }
 
         return $rules;

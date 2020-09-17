@@ -1,11 +1,13 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
+use App\Http\Controllers\Controller;
 use App\Http\Requests\UserRequest;
 use App\Http\Resources\User as UserResource;
 use App\Models\User;
 use App\Repositories\UserRepository;
+use Spatie\Permission\Models\Role;
 
 class UserController extends Controller
 {
@@ -16,28 +18,33 @@ class UserController extends Controller
 
     public function create()
     {
-        return view('users.create');
+        $roles = Role::pluck('name','name')->all();
+        return view('users.create', compact('roles'));
     }
 
     public function store(UserRequest $request)
     {
-        (new UserRepository)->create($request->validated());
+        $user = (new UserRepository)->create($request->validated());
 
         $message = _m('user.success.create');
-        return $this->chooseReturn('success', $message, 'users.index');
+        $user->assignRole($request->input('roles'));
+        return $this->chooseReturn('success', $message, 'admin.user.index');
     }
 
     public function edit(User $user)
     {
-        return view('users.edit', compact('user'));
+        $roles = Role::pluck('name','name')->all();
+        $userRole = $user->roles->pluck('name','name')->all();
+        return view('users.edit', compact('user', 'userRole', 'roles'));
     }
 
-    public function update(UserRequest $request, User $user)
+    public function update(UserRequest $request, $id)
     {
-        (new UserRepository())->update($user, $request->validated());
+        $user = (new UserRepository())->update($id, $request->validated());
 
         $message = _m('user.success.update');
-        return $this->chooseReturn('success', $message, 'users.index');
+        $user->assignRole($request->input('roles'));
+        return $this->chooseReturn('success', $message, 'admin.user.index');
     }
 
     public function show(User $user)

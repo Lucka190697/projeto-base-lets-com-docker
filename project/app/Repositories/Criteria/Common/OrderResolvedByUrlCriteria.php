@@ -3,6 +3,8 @@ namespace App\Repositories\Criteria\Common;
 
 use App\Repositories\Criteria\Criteria;
 use App\Repositories\Repository;
+//use http\Env\Request;
+use Illuminate\Support\Facades\Request;
 
 class OrderResolvedByUrlCriteria extends Criteria
 {
@@ -15,8 +17,8 @@ class OrderResolvedByUrlCriteria extends Criteria
 
     public function apply($queryBuilder, Repository $repository)
     {
-        $field = \Request::input('field') ?? $this->defaultOrderBy['field'] ?? 'updated_at';
-        $order = \Request::input('order') ?? $this->defaultOrderBy['order'] ?? 'desc';
+        $field = Request::input('field') ?? $this->defaultOrderBy['field'] ?? 'updated_at';
+        $order = Request::input('order') ?? $this->defaultOrderBy['order'] ?? 'desc';
 
         $queryBuilder = $queryBuilder->orderBy($field, $order);
 
