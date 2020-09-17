@@ -18,7 +18,7 @@
 @section('content')
     <div class="container">
         <div class="row justify-content-center">
-            <div class="col-md-10">
+            <div class="col-md-8 col-sm-12">
                 <div class="card">
                     <div class="card-header">
                         <h2>Detalhes</h2>
@@ -30,15 +30,15 @@
                             </div>
                         @endif
                         <div class="col-12">
-                            <div class="col-6 float-left">
+                            <div class="col-md-6 col-sm-12 float-md-left">
                                 <ul class="list-group">
                                     <li class="list-group-item">
                                         <img src="{{ asset('/book-default.png') }}" alt="img"
-                                             width="350" height="auto" class="img img-profile">
+                                             width="350" height="auto" class="img img-profile embed-responsive">
                                     </li>
                                 </ul>
                             </div>
-                            <div class="col-6 float-right">
+                            <div class="col-md-6 col-sm-12 float-md-right">
                                 <ul class="list-group">
                                     <li class="list-group-item">
                                         <strong>ID: </strong>{{ $book->id }}

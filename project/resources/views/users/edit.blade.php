@@ -17,15 +17,17 @@
         <div class="card-header">@lang('headings.users.edit')</div>
         <div class="card-body">
             <div class="d-flex flex-column align-items-center">
-                <div class="col-8 ">
+                <div class="col-md-8">
                     <form class="form-horizontal" method="POST" action="{{ route('admin.user.update', $user->id) }}">
                         @method('PUT')
                         @include('users.partials._form')
-                        <button class="btn btn-primary" type="submit">
-                            <i class="fa fa-check mr-1"></i>@lang('links._update')</button>
+                        <div class="form-group col-sm-12 col-md-6">
+                            <button class="btn btn-block btn-primary" type="submit">
+                                <i class="fa fa-check mr-1"></i>@lang('links._update')</button>
                     </form>
                 </div>
             </div>
         </div>
+    </div>
     </div>
 @endsection

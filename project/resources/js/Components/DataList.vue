@@ -1,9 +1,9 @@
 <template>
-    <div>
+    <div class="table table-responsive">
         <slot name="options">
         </slot>
 
-        <table class="col-12">
+        <table class="col-md-12">
             <thead>
                 <slot name="header" :orderBy="orderBy"></slot>
             </thead>

@@ -5,7 +5,7 @@
             @lang('headings._home')
         </breadcrumb-item>
         <breadcrumb-item href="{{route('loans.index')}}">
-           @lang('headings._loans')
+            @lang('headings._loans')
         </breadcrumb-item>
         <breadcrumb-item active>
             Solicitar empréstimo
@@ -18,11 +18,15 @@
         <div class="card-header">@lang('headings.loans.create')</div>
         <div class="card-body">
             <div class="d-flex flex-column align-items-center">
-                <div class="col-8">
+                <div class="col-md-8">
                     <form class="form-horizontal " method="POST" action="{{ route('loans.store') }}">
                         @include('loans.partials._form')
-                        <button class="btn btn-primary" type="submit">
-                            <i class="fa fa-check mr-1"></i>@lang('links._create')</button>
+                        <div class="row">
+                            <div class="form-group col-sm-12 col-md-6">
+                                <button class="btn btn-block btn-primary" type="submit">
+                                    <i class="fa fa-check mr-1"></i>@lang('links._create')</button>
+                            </div>
+                        </div>
                     </form>
                 </div>
             </div>

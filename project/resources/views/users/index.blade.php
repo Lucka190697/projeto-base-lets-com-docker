@@ -18,16 +18,16 @@
         <data-list data-source="{{ route('pagination.users') }}">
             <template #options>
                 <div class="row my-2">
-                    <div class="col-9">
+                    <div class="col-sm-12 col-md-9">
                         <filter-text url-key="query"
                                      class="col-12 form-control"
                                      placeholder="Buscar...">
                         </filter-text>
                     </div>
 
-                    <div class="col-3">
+                    <div class="col-md-3 col-sm-12">
                         <a :href="'{{ route('admin.user.create') }}'">
-                            <button class="btn btn-primary">
+                            <button class="btn btn-block btn-primary">
                                 <i class="fa fa-plus"></i>
                                 @lang('headings.users.create')
                             </button>
