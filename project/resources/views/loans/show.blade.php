@@ -51,7 +51,8 @@
                                         <strong>ID: </strong>{{ $loan->id }}
                                     </li>
                                     <li class="list-group-item">
-                                        <strong>@lang('headings.loans.book')</strong>{{ $loan->book_id }}
+                                        <strong>@lang('headings.loans.book')</strong>
+                                        {{ $loan->book->title }}, ID - {{$loan->book->id}}
                                     </li>
                                     <li class="list-group-item">
                                         <strong> @lang('headings.loans.loans_date') </strong>
@@ -62,7 +63,8 @@
                                         {{ format_date($loan->return_date, 'd/m/Y') }}
                                     </li>
                                     <li class="list-group-item">
-                                        <strong>@lang('headings.loans.is loan')</strong>{{ $loan->is_loan }}
+                                        <strong>@lang('headings.loans.is loan')</strong>
+                                        {{ $loan->is_loan ? __('labels.loans.available') : __('labels.loans.borrowed')}}
                                     </li>
                                 </ul>
                             </div>

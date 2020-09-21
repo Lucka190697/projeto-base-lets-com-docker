@@ -2,9 +2,8 @@
 
 namespace App\Repositories;
 
-use App\Models\Book;
 use App\Models\Loan;
-use DateTime;
+use Carbon\Carbon;
 
 class LoanRepository extends Repository
 {

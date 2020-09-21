@@ -2,6 +2,7 @@
 
 namespace App\Http\Resources;
 
+use App\Enums\UserRolesEnum;
 use Illuminate\Http\Resources\Json\JsonResource;
 
 class BookResource extends JsonResource
@@ -19,17 +20,21 @@ class BookResource extends JsonResource
             'title' => $this->title,
             'author' => $this->author,
             'giver' => $this->giver,
-            'user_id' => $this->user_id,
+            'user_id' => $this->user->name,
             'entryDate' => format_date($this->entryDate, 'd/m/Y'),
             'thumbnail' => $this->thumbnail,
             'created_at' => format_date($this->created_at),
 
             'links' => [
-                'edit' => $this->when(true, route('books.edit', $this->id)),
+                'edit' => $this->when($this->getPermissions(), route('books.edit', $this->id)),
                 'show' => $this->when(true, route('books.show', $this->id)),
-                'destroy' => $this->when(true, route('books.destroy', $this->id)),
-                'reserve' => $this->when(true, route('books.reserve', $this->id)),
+                'destroy' => $this->when($this->getPermissions(), route('books.destroy', $this->id)),
             ],
         ];
+    }
+
+    private function getPermissions()
+    {
+        return current_user()->hasRole(UserRolesEnum::ADMIN) ?? !$this->loan->id;
     }
 }

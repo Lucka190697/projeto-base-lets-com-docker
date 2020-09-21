@@ -2,6 +2,7 @@
 namespace App\Repositories;
 
 use App\Models\User;
+use Illuminate\Support\Facades\Hash;
 
 class UserRepository extends Repository
 {
@@ -20,5 +21,11 @@ class UserRepository extends Repository
             $data['password'] = $current['password'];
             return $data;
         }
+    }
+
+    public function createHash($data)
+    {
+        $data['password'] = Hash::make($data['password']);
+        return $data;
     }
 }

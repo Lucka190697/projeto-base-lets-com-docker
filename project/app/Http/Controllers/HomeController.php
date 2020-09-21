@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Enums\UserRolesEnum;
 use App\Models\User;
 use App\Models\Book;
 use App\Models\Loan;
@@ -11,18 +12,10 @@ class HomeController extends Controller
     /**
      * Show the application dashboard.
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Http\Response|\Illuminate\View\View
      */
-    public function index(User $user, Book $book, Loan $loan)
+    public function index()
     {
-        $total_users = User::count();//Total de Usuários
-        $total_books = Book::count();//Livros Cadastrados
-        $total_loans = Loan::count();//Total de Empréstimos
-        $books_loan = $book->loans()->count();//Total de Livros emprestados
-        $user_loan = current_user()->loans()->count();//retorna os empréstimos do usuário
-//        dd('$user_loan ' . $user_loan . '$total_loans ' . $total_loans);
-
-        return view('home',
-            compact('total_books', 'total_loans', 'total_users','books_loan', 'user_loan'));
+        return view('home');
     }
 }

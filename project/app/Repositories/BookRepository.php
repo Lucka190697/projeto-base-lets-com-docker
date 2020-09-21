@@ -17,12 +17,4 @@ class BookRepository extends Repository
         $data['user_id'] = auth()->user()->id;
         return $data;
     }
-
-    public function dateTreatment($data)
-    {
-        $date = DateTime::createFromFormat('d/m/Y', $data['entryDate']);
-        $data['entryDate'] = $date->format('Y-m-d H:m:s');
-//        $data['entryDate'] = date('Y-m-d H:i:s', strtotime($data['entryDate']));
-        return $data;
-    }
 }

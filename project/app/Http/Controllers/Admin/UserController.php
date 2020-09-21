@@ -12,13 +12,8 @@ use Spatie\Permission\Models\Role;
 
 class UserController extends Controller
 {
-    public function index(User $user, Book $book)
+    public function index()
     {
-//        $teste = $book->find(1)->user;//retorna o usuário que dadastrou o livro 1
-//        $teste = current_user()->books()->get();//retorna os livros do usuário
-//        $teste = current_user()->books()->get();//retorna os livros do usuário
-//        $users = Farm::find(auth()->user()->id)->users;
-//        dd($teste);
         return view('users.index');
     }
 
@@ -28,9 +23,11 @@ class UserController extends Controller
         return view('users.create', compact('roles'));
     }
 
-    public function store(UserRequest $request)
+    public function store(UserRequest $request, UserRepository $repository)
     {
-        $user = (new UserRepository)->create($request->validated());
+        $data = $request->validated();
+        $data = (new UserRepository)->createHash($data);
+        $user = (new UserRepository)->create($data);
 
         $message = _m('user.success.create');
         $user->assignRole($request->input('roles'));

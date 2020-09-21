@@ -100,67 +100,7 @@ return [
     */
 
     'custom' => [
-
-        /* USER */
-        'name' => [
-            'required' => 'Digite o nome',
-            'max' => 'O nome deve ter no máximo 255 caracteres',
-            'min' => 'O nome deve ter no mínimo 5 caracrere',
-        ],
-        'email' => [
-            'required' => 'Digite o email',
-            'email' => 'Digite um email válido',
-            'unique:users,email' => 'Digite um email válido',
-        ],
-        'password' => [
-            'string' => 'Digite uma senha válida',
-            'confirmed' => 'As senhas devem coincidir',
-            'min' => 'A senha deve conter no mínimo 8 caracteres',
-            'max' => 'A senha deve conter no máximo 255 caracteres',
-        ],
-        /* BOOK */
-        'isbn' => [
-            'required' => 'Digite o ISBN',
-            'unique' => 'Este código o ISBN já existe',
-            'min' => 'ISBN deve ter no mínimo 13 caracteres',
-            'max' => 'ISBN deve ter no máximo 255 caracteres',
-        ],
-        'title' => [
-            'required' => 'Preencha o título',
-            'min' => 'O titulo precisa ter no mínimo 3 caracteres',
-            'max' => 'O titulo precisa ter no maximo 255 caracteres',
-        ],
-        'author' => [
-            'required' => 'Preencha o autor',
-            'min' => 'O autor precisa ter no mínimo 3 caracteres',
-            'max' => 'O autor precisa ter no maximo 255 caracteres',
-        ],
-        'giver' => [
-            'required' => 'Preencha o doador',
-            'min' => 'O doador precisa ter no mínimo 3 caracteres',
-            'max' => 'O doador precisa ter no maximo 255 caracteres',
-        ],
-        'entryDate' => [
-            'required' => 'Digite a data de entrada',
-            'date_format' => 'Digite uma data válida, exemplo: 19/09/2020',
-            'after_or_equal' => 'Selecione uma data posterior ou igual a 31/12/2050 ',
-            'before_or_equal' => 'Selecione uma data anterior ou igual a hoje'
-        ],
-
-        /* LOANS */
-        'loans_date' => [
-            'required' => 'Selecione a data do empréstimo',
-            'date_format' => 'Digite uma data válida, exemplo: 19/09/2020',
-            'before_or_equal' => 'Selecione uma data anterior ou igual a de hoje',
-        ],
-        'return_date' => [
-            'required' => 'Digite a data de devolução',
-            'date_format' => 'Digite uma data válida, exemplo: 19/09/2020',
-            'after_or_equal' => 'A data de devolução não pode ser antes da data do emréstimo',
-        ],
-        'book_id' => [
-            'required' => 'Selecione o livro',
-        ],
+        //
     ],
 
     /*
@@ -177,9 +117,10 @@ return [
     'attributes' => [
 
         //USER
-        'name' => 'Campo nome',
+        'name' => 'Nome',
         'email' => 'Email',
-        'password' => 'A senha',
+        'password' => 'Senha',
+        'password_confirmation' => 'Confirmação de senha',
 
         //BOOKS
         'isbn' => 'ISBN',
@@ -192,5 +133,6 @@ return [
         'loans_date' => 'data do emprestimo',
         'return_date' => 'data de devolução',
         'book_id' => 'livro',
+        'user_id' => 'usuário',
     ],
 ];

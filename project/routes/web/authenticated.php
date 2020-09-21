@@ -15,4 +15,3 @@ Route::namespace('Admin')
 Route::resource('books', 'BookController');
 
 Route::resource('loans', 'LoanController');
-Route::get('books/{id}/reserve', 'LoanController@reserve')->name('books.reserve');

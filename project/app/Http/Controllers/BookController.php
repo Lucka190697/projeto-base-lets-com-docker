@@ -26,10 +26,10 @@ class BookController extends Controller
         return view('books.create');
     }
 
-    public function store(BookRequest $request, BookRepository $repository, User $user)
+    public function store(BookRequest $request)
     {
         $data = $request->validated();
-        $data = $repository->dateTreatment($data);
+
         current_user()->books()->create($data);
 
         $message = _m('common.success.create');
@@ -45,7 +45,7 @@ class BookController extends Controller
     public function update(BookRepository $repository, BookRequest $request, $id)
     {
         $data = $request->validated();
-        $data = $repository->dateTreatment($data);
+
         $repository->update($id, $data);
 
         $message = _m('common.success.update');
@@ -72,7 +72,7 @@ class BookController extends Controller
     {
         $pagination = new PaginationBuilder();
         return $pagination->repository(new BookRepository())
-            ->criteria(new Has('loans', '<>', 1))
+//            ->criteria(new Has('loan', '<>', 1))
             ->resource(BookResource::class);
     }
 }

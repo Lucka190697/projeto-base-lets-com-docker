@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
 
 class BooksTableSeeder extends Seeder
 {
@@ -18,7 +19,6 @@ class BooksTableSeeder extends Seeder
                 'author' => 'Marv Wolfman',
                 'giver' => 'Barry Allen',
                 'entryDate' => '2020-08-03 21:30:00',
-                'thumbnail' => 'default.jpg',
 
                 'user_id' => 1,
             ]

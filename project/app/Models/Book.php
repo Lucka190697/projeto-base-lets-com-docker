@@ -3,22 +3,28 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use App\Scopes\Search as SearchScope;
 
 class Book extends Model
 {
+    use SearchScope;
+
     protected $fillable = [
         'isbn',
         'title',
         'author',
         'giver',
         'entryDate',
-        'thumbnail',
         'user_id',
     ];
 
-    public function loans()
+    protected $searchBy = [
+        'isbn', 'title', 'author', 'giver',
+    ];
+
+    public function loan()
     {
-        return $this->hasMany(Loan::class);
+        return $this->hasOne(Loan::class);
     }
 
     public function user()
@@ -26,20 +32,8 @@ class Book extends Model
         return $this->belongsTo(User::class);
     }
 
-
-    public function search($data)
+    public function setEntryDateAttribute($value)
     {
-        $books = $this->where(function ($query) use ($data) {
-            if (isset($data['search'])){
-                $query->where('isbn', 'ilike', '%' . $data['search'] . '%')
-                    ->orWhere('title', 'ilike', '%' . $data['search'] . '%')
-                    ->orWhere('author', 'ilike', '%' . $data['search'] . '%')
-                    ->orWhere('giver', 'ilike', '%' . $data['search'] . '%')
-                    ->orWhere('entryDate', 'ilike', '%' . $data['search'] . '%')
-                    ->orWhere('thumbnail', 'ilike', '%' . $data['search'] . '%')
-                    ->get();
-            }
-        });
-        return $books->get();
+        $this->attributes['entryDate'] = format_carbon($value, 'd/m/Y');
     }
 }

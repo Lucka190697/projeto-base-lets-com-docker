@@ -2,6 +2,7 @@
 
 namespace App\Http\Resources;
 
+use App\Enums\UserRolesEnum;
 use Illuminate\Http\Resources\Json\JsonResource;
 
 class LoanResource extends JsonResource
@@ -9,17 +10,22 @@ class LoanResource extends JsonResource
     public function toArray($request)
     {
         return [
-            'loans_date' => format_date($this->loans_date, 'd/m/Y'),//$this->loans_date
-            'return_date' => format_date($this->return_date, 'd/m/Y'),//format_date($this->created_at),
-            'is_loan' => $this->is_loan ? __('labels.loans.borrowed') : __('labels.loans.available'),
-            'user_id' => $this->user_id,
-            'book_id' => $this->book_id,
+            'loans_date' => format_date($this->loans_date, 'd/m/Y'),
+            'return_date' => format_date($this->return_date, 'd/m/Y'),
+            'is_loan' => $this->is_loan ? __('labels.loans.available') : __('labels.loans.borrowed'),
+            'user_id' => $this->user->name,
+            'book_id' => $this->book->title,
 
             'links' => [
-                'edit' => $this->when(true, route('loans.edit', $this->id)),
+                'edit' => $this->when(current_user()->hasRole(UserRolesEnum::ADMIN), route('loans.edit', $this->id)),
                 'show' => $this->when(true, route('loans.show', $this->id)),
-                'destroy' => $this->when(true, route('loans.destroy', $this->id)),
+                'destroy' => $this->when($this->getPermissions(), route('loans.destroy', $this->id)),
             ],
         ];
+    }
+
+    private function getPermissions()
+    {
+        return current_user()->id == $this->user->id;
     }
 }

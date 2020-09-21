@@ -9,7 +9,7 @@
                         <i class="fa fa-tachometer"></i>
                         @lang('headings.Dashboard')
                     </div>
-                    <div class="card-body">
+                    <div class="card-body flex-column align-items-center">
                         @if (session('status'))
                             <div class="alert alert-success">
                                 {{ session('status') }}

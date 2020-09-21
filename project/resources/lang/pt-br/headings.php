@@ -15,6 +15,15 @@ return [
 
     'Details' => 'Detalhes',
     'View books details' => 'Visualizar Livro',
+    'Total Users' => 'Total de Usuários',
+    'Total Collection' => 'Acervo Total',
+    'Total Loans' => 'Total de Empréstimos',
+    'Your loans' => 'Seus empréstimos',
+
+    'All users who have access to the system' => 'Todos os usuários que têm acesso ao sistema',
+    'All registered books' => 'Todos os livros registrados',
+    'Loans from all users of the system' => 'Empréstimos de todos os usuários do sistema',
+    'All loans linked to your account' => 'Todos os empréstimos atrelados á sua conta',
 
     'users' => [
         'index' => 'Usuários',
@@ -54,6 +63,7 @@ return [
         'book' => 'Livro',
         'Entry Date' => 'Data da Entrada',
         'is loan' => 'estado',
+        'User' => 'Usuário',
 
     ],
 ];

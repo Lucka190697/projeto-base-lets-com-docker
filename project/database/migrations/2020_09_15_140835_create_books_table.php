@@ -20,7 +20,6 @@ class CreateBooksTable extends Migration
             $table->string('author');
             $table->string('giver');
             $table->timestamp('entryDate');
-            $table->string('thumbnail')->nullable();
 
             $table->integer('user_id')->unsigned();
             $table->foreign('user_id')

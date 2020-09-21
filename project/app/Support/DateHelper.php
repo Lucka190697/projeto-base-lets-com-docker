@@ -29,9 +29,9 @@ class DateHelper
     /**
      * Formata uma data para o formato indicado
      *
-     * @param  Carbon|string  $date  Date to format.
-     * @param  string  $toFormat  Format.
-     * @param  string  $fromFormat  Origin format.
+     * @param Carbon|string $date Date to format.
+     * @param string $toFormat Format.
+     * @param string $fromFormat Origin format.
      * @return string
      */
     public static function formatDate($date, $toFormat = null, $fromFormat = null)
@@ -44,7 +44,7 @@ class DateHelper
             return $date->format($toFormat);
         }
 
-        $date = ((bool) $fromFormat && !empty($date))
+        $date = ((bool)$fromFormat && !empty($date))
             ? Carbon::createFromFormat($fromFormat, $date)
             : Carbon::parse($date);
 
@@ -54,8 +54,8 @@ class DateHelper
     /**
      * Dado uma data inicial e uma final, retorna todos os dias entre elas
      *
-     * @param  Carbon  $startDate  Data inicial
-     * @param  Carbon  $end_date  Data final
+     * @param Carbon $startDate Data inicial
+     * @param Carbon $end_date Data final
      * @return array
      */
     public static function generateDateRange(Carbon $startDate, Carbon $endDate)
@@ -74,8 +74,8 @@ class DateHelper
      * Dado um intervalo em string, converte para uma array com os devidos formatos
      *  para o banco de dados
      *
-     * @param  string  $period
-     * @param  string  $periodSeparator
+     * @param string $period
+     * @param string $periodSeparator
      * @return array
      */
     public static function convertDateInterval(string $period, string $periodSeparator = '-')
