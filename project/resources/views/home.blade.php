@@ -7,7 +7,7 @@
                 <div class="card">
                     <div class="card-header">
                         <i class="fa fa-tachometer"></i>
-                        Dashboard
+                        @lang('headings.Dashboard')
                     </div>
                     <div class="card-body">
                         @if (session('status'))

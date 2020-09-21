@@ -9,4 +9,16 @@ class UserRepository extends Repository
     {
         return User::class;
     }
+
+    public function passwordVerification($request, $id)
+    {
+        $data = $request->validated();
+        if(isset($request->validated()->password))
+            return $data;
+        else{
+            $current = User::find($id);
+            $data['password'] = $current['password'];
+            return $data;
+        }
+    }
 }

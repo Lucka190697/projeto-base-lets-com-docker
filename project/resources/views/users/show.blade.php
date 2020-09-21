@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('breadcrumb')
-    <breadcrumb header="Visualizar Livro">
+    <breadcrumb header="@lang('headings.View books details')">
         <breadcrumb-item href="{{ route('home') }}">
             @lang('headings._home')
         </breadcrumb-item>
@@ -21,7 +21,14 @@
             <div class="col-md-8 col-sm-12">
                 <div class="card">
                     <div class="card-header">
-                        <h1>Detalhes</h1>
+                        <div class="float-lg-left">
+                            <h1>@lang('headings.Details')</h1>
+                        </div>
+                        <div class="float-lg-right">
+                            <a href="{{ route('admin.user.index')}}" class="btn btn-primary">
+                                <i class="fa fa-arrow-left mr-2"></i>Voltar
+                            </a>
+                        </div>
                     </div>
                     <div class="card-body">
                         @if (session('status'))
@@ -41,7 +48,8 @@
                             <div class="col-md-6 col-sm-12 float-right">
                                 <ul class="list-group">
                                     <li class="list-group-item">
-                                        <strong>ID: </strong>{{ $user->id }}
+                                        <strong>ID: </strong>
+                                        {{ $user->id }}
                                     </li>
                                     <li class="list-group-item">
                                         <strong>@lang('headings.users.name')</strong>

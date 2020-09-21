@@ -62,7 +62,7 @@
                             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
                                 <a href="{{ route('logout') }}" class="dropdown-item"
                                    onclick="event.preventDefault();document.getElementById('logout-form').submit();">
-                                    Logout
+                                    <i class="fa fa-door"></i>@lang('labels.Logout')
                                 </a>
 
                                 <form id="logout-form" action="{{ route('logout') }}" method="POST"
@@ -98,6 +98,7 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.15/jquery.mask.min.js"></script>
+
 
 @yield('footer')
 </body>

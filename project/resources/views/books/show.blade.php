@@ -1,12 +1,12 @@
 @extends('layouts.app')
 
 @section('breadcrumb')
-    <breadcrumb header="Visualizar Livro">
+    <breadcrumb header="@lang('headings.Details')">
         <breadcrumb-item href="{{ route('home') }}">
             @lang('headings._home')
         </breadcrumb-item>
-        <breadcrumb-item href="{{ route('books.create') }}">
-            @lang('headings.books.create')
+        <breadcrumb-item href="{{ route('books.index') }}">
+            @lang('headings._books')
         </breadcrumb-item>
 
         <breadcrumb-item active>
@@ -21,7 +21,14 @@
             <div class="col-md-8 col-sm-12">
                 <div class="card">
                     <div class="card-header">
-                        <h2>Detalhes</h2>
+                        <div class="float-lg-left">
+                            <h2>@lang('headings.Details')</h2>
+                        </div>
+                        <div class="float-lg-right">
+                            <a href="{{ route('books.index')}}" class="btn btn-primary">
+                                <i class="fa fa-arrow-left mr-2"></i>Voltar
+                            </a>
+                        </div>
                     </div>
                     <div class="card-body">
                         @if (session('status'))
@@ -47,16 +54,16 @@
                                         <strong>ISBN: </strong>{{ $book->isbn }}
                                     </li>
                                     <li class="list-group-item">
-                                        <strong> @lang('headings.loans.Title') </strong>{{ $book->title }}
+                                        <strong> @lang('headings.books.Title') </strong>{{ $book->title }}
                                     </li>
                                     <li class="list-group-item">
-                                        <strong> @lang('headings.loans.Author') </strong>{{ $book->author }}
+                                        <strong> @lang('headings.books.Author') </strong>{{ $book->author }}
                                     </li>
                                     <li class="list-group-item">
-                                        <strong> @lang('headings.loans.Owner') </strong>{{ $book->user->name }}
+                                        <strong> @lang('headings.books.Owner') </strong>{{ $book->user->name }}
                                     </li>
                                     <li class="list-group-item">
-                                        <strong> @lang('headings.loans.Entry Date') </strong>{{ $book->entryDate = date('d/m/Y', strtotime($book->entryDate)) }}
+                                        <strong> @lang('headings.books.Entry Date') </strong>{{ $book->entryDate = date('d/m/Y', strtotime($book->entryDate)) }}
                                     </li>
                                 </ul>
                             </div>

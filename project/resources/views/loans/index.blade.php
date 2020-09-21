@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('breadcrumb')
-    <breadcrumb header="Empréstimos">
+    <breadcrumb header="@lang('headings._loans')">
         <breadcrumb-item href="{{ route('home') }}">
             @lang('headings._home')
         </breadcrumb-item>
@@ -21,7 +21,7 @@
                         <div class="col-sm-12 col-md-9">
                             <filter-text url-key="query"
                                          class="col-12 form-control"
-                                         placeholder="Buscar...">
+                                         placeholder="@lang('labels.Search')...">
                             </filter-text>
                         </div>
 

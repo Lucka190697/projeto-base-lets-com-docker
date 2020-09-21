@@ -24,12 +24,11 @@ class BookRequest extends FormRequest
     public function rules()
     {
         $rules =  [
-            'isbn' => 'required|string|max:255|min:3|unique:books,isbn',//min:13
+            'isbn' => 'required|string|max:255|min:13|unique:books,isbn',
             'title' => 'required|string|max:255|min:3',
             'author' => 'required|string|max:255|min:3',
             'giver' => 'required|string|max:15|min:3',
-            'entryDate' => 'required|string|max:20|min:1|after_or_equal:'. today()->format('d/m/Y'),
-            'thumbnail' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048|min:1',
+            'entryDate' => 'required|date_format:d/m/Y|before_or_equal:today',
         ];
 
         if($this->method() == 'PUT'){

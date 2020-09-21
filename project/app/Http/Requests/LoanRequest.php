@@ -3,6 +3,8 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use DateTime;
+use Carbon\Carbon;
 
 class LoanRequest extends FormRequest
 {
@@ -23,9 +25,9 @@ class LoanRequest extends FormRequest
      */
     public function rules()
     {
-        $rules =  [
-            'loans_date' => 'required|string|max:18|min:10|before_or_equal:'. today()->format('d/m/Y'),
-            'return_date' => 'required|string|max:18|min:10|after_or_equal:loans_date|before_or_equal:'. today()->format('d/m/Y'),
+        $rules = [
+            'loans_date' => 'required|date_format:d/m/Y|before_or_equal:' . today()->format('d/m/Y'),
+            'return_date' => 'required|date_format:d/m/Y|after_or_equal:loans_date',
             'book_id' => 'required|integer|max:255|min:1',
         ];
         return $rules;
@@ -36,7 +38,7 @@ class LoanRequest extends FormRequest
         $messages = [
             'loans_date:required' => 'Digite a data do empréstimo',
             'return_date:required' => 'Digite a data da devolução',
-            'loans_date:before_or_equal:'. today()->format('d/m/Y') => 'Selecione uma data anterior a de hoje',
+            'loans_date:before_or_equal:' . today()->format('d/m/Y') => 'Selecione uma data anterior a de hoje',
             'return_date:after_or_equal:loans_date' => 'Selecione uma data posterior a data de empréstimo',
             'return_date:before_or_equal:' . today()->format('d/m/Y') => 'Selecione uma data posterior a hoje',
             'book_id:required' => 'Selecione um Livro',

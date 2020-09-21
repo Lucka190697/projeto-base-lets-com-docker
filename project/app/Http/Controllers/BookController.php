@@ -6,8 +6,10 @@ use App\Http\Requests\BookRequest;
 use App\Http\Resources\BookResource;
 use App\Models\Book;
 use App\Models\Loan;
+use App\Models\User;
 use App\Repositories\BookRepository;
 use App\Repositories\Criteria\Common\Has;
+use App\Repositories\Repository;
 use App\Support\PaginationBuilder;
 use Illuminate\Http\Request;
 
@@ -24,9 +26,10 @@ class BookController extends Controller
         return view('books.create');
     }
 
-    public function store(BookRequest $request)
+    public function store(BookRequest $request, BookRepository $repository, User $user)
     {
         $data = $request->validated();
+        $data = $repository->dateTreatment($data);
         current_user()->books()->create($data);
 
         $message = _m('common.success.create');
@@ -39,9 +42,11 @@ class BookController extends Controller
         return view('books.edit', compact('book'));
     }
 
-    public function update(BookRequest $request, $id)
+    public function update(BookRepository $repository, BookRequest $request, $id)
     {
-        (new BookRepository())->update($id, $request->validated());
+        $data = $request->validated();
+        $data = $repository->dateTreatment($data);
+        $repository->update($id, $data);
 
         $message = _m('common.success.update');
         return $this->chooseReturn('success', $message, 'books.index');

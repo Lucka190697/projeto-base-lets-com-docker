@@ -77,10 +77,10 @@
                 <div class="row no-gutters align-items-center">
                     <div class="col mr-2">
                         <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">
-                            Livros emprestados
+                            Seus emprestados
                         </div>
                         <div class="h5 mb-0 font-weight-bold text-gray-800 float-left">
-                            {{$books_loan}}
+                            {{$user_loan}}
                         </div>
                         <div class="h5 mb-0 font-weight-bold text-gray-800 float-right">
                             <h2><i class="fa fa-clipboard"></i></h2>

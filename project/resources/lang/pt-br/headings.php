@@ -6,10 +6,15 @@ return [
      * Cabeçalhos com nome genérico devem começar com underline.
      */
 
+    'Dashboard' => 'Painel',
+
     '_home' => 'Home',
     '_users' => 'Usuários',
     '_books' => 'Livros',
     '_loans' => 'Empréstimos',
+
+    'Details' => 'Detalhes',
+    'View books details' => 'Visualizar Livro',
 
     'users' => [
         'index' => 'Usuários',
@@ -34,6 +39,8 @@ return [
         'Owner' => 'Proprietário',
         'Giver' => 'Doador',
         'Entry Date' => 'Data da Entrada',
+
+        'Collection' => 'Acervo',
     ],
 
     'loans' => [

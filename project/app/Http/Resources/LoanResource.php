@@ -11,7 +11,7 @@ class LoanResource extends JsonResource
         return [
             'loans_date' => format_date($this->loans_date, 'd/m/Y'),//$this->loans_date
             'return_date' => format_date($this->return_date, 'd/m/Y'),//format_date($this->created_at),
-            'is_loan' => $this->is_loan,
+            'is_loan' => $this->is_loan ? __('labels.loans.borrowed') : __('labels.loans.available'),
             'user_id' => $this->user_id,
             'book_id' => $this->book_id,
 

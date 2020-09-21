@@ -18,8 +18,9 @@ class HomeController extends Controller
         $total_users = User::count();//Total de Usuários
         $total_books = Book::count();//Livros Cadastrados
         $total_loans = Loan::count();//Total de Empréstimos
-        $books_loan = $book->loans()->count();
-        $user_loan = $user->loans()->get()->count();
+        $books_loan = $book->loans()->count();//Total de Livros emprestados
+        $user_loan = current_user()->loans()->count();//retorna os empréstimos do usuário
+//        dd('$user_loan ' . $user_loan . '$total_loans ' . $total_loans);
 
         return view('home',
             compact('total_books', 'total_loans', 'total_users','books_loan', 'user_loan'));

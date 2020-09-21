@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @section('breadcrumb')
-    <breadcrumb header="Editar empréstimo">
+    <breadcrumb header="@lang('headings.loans.edit')">
         <breadcrumb-item href="{{ route('home') }}">
             @lang('headings._home')
         </breadcrumb-item>
@@ -15,7 +15,16 @@
 
 @section('content')
     <div class="card">
-        <div class="card-header">@lang('headings.loans.edit')</div>
+        <div class="card-header">
+            <div class="float-lg-left">
+                @lang('headings.loans.edit')
+            </div>
+            <div class="float-lg-right">
+                <a href="{{ route('loans.index')}}" class="btn btn-primary">
+                    <i class="fa fa-arrow-left mr-2"></i>Voltar
+                </a>
+            </div>
+        </div>
         <div class="card-body">
             <div class="d-flex flex-column align-items-center">
                 <div class="col-md-8">

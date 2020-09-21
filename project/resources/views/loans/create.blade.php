@@ -8,14 +8,23 @@
             @lang('headings._loans')
         </breadcrumb-item>
         <breadcrumb-item active>
-            Solicitar empréstimo
+            @lang('headings.loans.create')
         </breadcrumb-item>
     </breadcrumb>
 @endsection
 
 @section('content')
     <div class="card">
-        <div class="card-header">@lang('headings.loans.create')</div>
+        <div class="card-header">
+            <div class="float-lg-left">
+                @lang('headings.loans.create')
+            </div>
+            <div class="float-lg-right">
+                <a href="{{ route('loans.index')}}" class="btn btn-primary">
+                    <i class="fa fa-arrow-left mr-2"></i>Voltar
+                </a>
+            </div>
+        </div>
         <div class="card-body">
             <div class="d-flex flex-column align-items-center">
                 <div class="col-md-8">

@@ -5,14 +5,20 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\UserRequest;
 use App\Http\Resources\User as UserResource;
+use App\Models\Book;
 use App\Models\User;
 use App\Repositories\UserRepository;
 use Spatie\Permission\Models\Role;
 
 class UserController extends Controller
 {
-    public function index()
+    public function index(User $user, Book $book)
     {
+//        $teste = $book->find(1)->user;//retorna o usuário que dadastrou o livro 1
+//        $teste = current_user()->books()->get();//retorna os livros do usuário
+//        $teste = current_user()->books()->get();//retorna os livros do usuário
+//        $users = Farm::find(auth()->user()->id)->users;
+//        dd($teste);
         return view('users.index');
     }
 
@@ -38,9 +44,10 @@ class UserController extends Controller
         return view('users.edit', compact('user', 'userRole', 'roles'));
     }
 
-    public function update(UserRequest $request, $id)
+    public function update(UserRequest $request, UserRepository $repository, $id)
     {
-        $user = (new UserRepository())->update($id, $request->validated());
+        $data = $repository->passwordVerification($request, $id);
+        $user = (new UserRepository())->update($id, $data);
 
         $message = _m('user.success.update');
         $user->assignRole($request->input('roles'));

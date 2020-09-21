@@ -11,11 +11,12 @@ use App\Repositories\BookRepository;
 use App\Repositories\Criteria\Common\Has;
 use App\Repositories\LoanRepository;
 use App\Support\PaginationBuilder;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 
 class LoanController extends Controller
 {
-    public function index()
+    public function index(Loan $loan, Book $book)
     {
         return view('loans.index');
     }
@@ -29,10 +30,15 @@ class LoanController extends Controller
     public function store(LoanRequest $request, LoanRepository $repository)
     {
         $data = $request->validated();
-        $data = $repository->dateTreatment($data);
-        $data = $repository->foreignTreatment($data);
+        $data['loans_date'] = Carbon::createFromFormat('d/m/Y', $data['loans_date']);
+        $data['return_date'] = Carbon::createFromFormat('d/m/Y', $data['return_date']);
 
-        current_user()->loans()->create($data);
+//        dd($data);
+
+//        $loan = new Loan($data);
+        $book = (new BookRepository())->find($data['book_id']);
+        dd($book);
+        $book->loans()->save($data);
 
         $message = _m('common.success.create');
         return $this->chooseReturn('success', $message, 'loans.index');
@@ -77,7 +83,6 @@ class LoanController extends Controller
         return $pagination->repository(new LoanRepository())
             ->resource(LoanResource::class);
     }
-
 
     public function reserve($id)
     {

@@ -1,13 +1,16 @@
 @extends('layouts.app')
 
 @section('breadcrumb')
-    <breadcrumb header="Visualizar usuário">
+    <breadcrumb header="@lang('headings.Details')">
         <breadcrumb-item href="{{ route('home') }}">
-            @lang('headings.users.create')
+            @lang('headings._home')
+        </breadcrumb-item>
+        <breadcrumb-item href="{{ route('loans.index') }}">
+            @lang('headings._loans')
         </breadcrumb-item>
 
         <breadcrumb-item active>
-            @lang('headings.users.show')
+            @lang('headings.loans.show')
         </breadcrumb-item>
     </breadcrumb>
 @endsection
@@ -18,7 +21,14 @@
             <div class="col-md-8 col-sm-12">
                 <div class="card">
                     <div class="card-header">
-                        <h2>@lang('headings.loans.show')</h2>
+                        <div class="float-lg-left">
+                            <h2>@lang('headings.loans.show')</h2>
+                        </div>
+                        <div class="float-lg-right">
+                            <a href="{{ route('loans.index')}}" class="btn btn-primary">
+                                <i class="fa fa-arrow-left mr-2"></i>Voltar
+                            </a>
+                        </div>
                     </div>
                     <div class="card-body">
                         @if (session('status'))

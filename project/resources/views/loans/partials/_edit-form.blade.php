@@ -24,7 +24,7 @@
                name="loans_date"
                class="form-control {{ with_error('loans_date', 'border border-danger') }}"
                id="loanLoans_date"
-               placeholder="Data do empréstimo" maxlength="10"
+               placeholder="@lang('headings.loans.loans_date')" maxlength="10"
                onkeypress="$(this).mask('00/00/0000');"
                value="{{old('loans_date') ?? format_date($loan->loans_date, 'd/m/Y') ?? ''}}">
     </div>
@@ -36,7 +36,7 @@
         <input type="text"
                name="return_date"
                class="form-control {{ with_error('return_date', 'border border-danger') }}"
-               id="loanReturn_date" placeholder="Data de Devolução"
+               id="loanReturn_date" placeholder="@lang('headings.loans.return_date')"
                onkeypress="$(this).mask('00/00/0000');"
                value="{{old('return_date') ?? format_date($loan-> return_date, 'd/m/Y') ?? ''}}">
     </div>
