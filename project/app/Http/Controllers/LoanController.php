@@ -33,11 +33,7 @@ class LoanController extends Controller
         $data['loans_date'] = Carbon::createFromFormat('d/m/Y', $data['loans_date']);
         $data['return_date'] = Carbon::createFromFormat('d/m/Y', $data['return_date']);
 
-//        dd($data);
-
-//        $loan = new Loan($data);
         $book = (new BookRepository())->find($data['book_id']);
-        dd($book);
         $book->loans()->save($data);
 
         $message = _m('common.success.create');
