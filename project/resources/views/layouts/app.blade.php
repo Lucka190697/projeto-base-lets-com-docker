@@ -15,13 +15,14 @@
           rel="stylesheet">
     {{--        <link href="https://startbootstrap.github.io/startbootstrap-sb-admin-2/vendor/fontawesome-free/css/all.min.css"--}}
     {{--              rel="stylesheet">--}}
+    <link href="{{asset('css/sb-admin-custom')}}" rel="stylesheet">
     @yield('header')
 </head>
 
 <body>
 <div id="app">
     @include('layouts.flash-messages')
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <nav class="navbar-nav ml-auto">
         <div class="container">
             <a class="navbar-brand" href="{{ url('/') }}">
                 {{ config('app.name', 'Laravel') }}
